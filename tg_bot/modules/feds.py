@@ -605,7 +605,7 @@ def fed_ban(bot: Bot, update: Update, args: List[str]):
         return
 
     if int(user_id) in WHITELIST_USERS:
-        message.reply_text("Neptunians cannot be fed banned!")
+        message.reply_text("Hyenas cannot be fed banned!")
         return
 
     try:
