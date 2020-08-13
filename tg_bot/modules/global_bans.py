@@ -16,7 +16,7 @@ from tg_bot import (
     SUDO_USERS,
     DEV_USERS,
     SUPPORT_USERS,
-    SARDEGNA_USERS,
+    TIGER_USERS,
     WHITELIST_USERS,
     STRICT_GBAN,
     GBAN_LOGS,
@@ -93,8 +93,8 @@ def gban(bot: Bot, update: Update, args: List[str]):
         )
         return
 
-    if int(user_id) in SARDEGNA_USERS:
-        message.reply_text("That's a Sardegna! They cannot be banned!")
+    if int(user_id) in TIGER_USERS:
+        message.reply_text("That's a Tiger! They cannot be banned!")
         return
 
     if int(user_id) in WHITELIST_USERS:
