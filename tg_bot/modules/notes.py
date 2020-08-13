@@ -214,7 +214,7 @@ def list_notes(bot: Bot, update: Update):
 
     msg = "*Notes in chat:*\n"
     for note in note_list:
-        note_name = escape_markdown(f" - {note.name}\n")
+        note_name = (" • `#{}`\n".format(note.name))
         if len(msg) + len(note_name) > MAX_MESSAGE_LENGTH:
             update.effective_message.reply_text(msg, parse_mode=ParseMode.MARKDOWN)
             msg = ""
