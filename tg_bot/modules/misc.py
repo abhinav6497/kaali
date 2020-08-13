@@ -162,22 +162,22 @@ def info(bot: Bot, update: Update, args: List[str]):
         pass
 
     if user.id == OWNER_ID:
-            text += f'\nThe Nation level of this person is <a href="https://t.me/kaalirobot?start=nations">God</a>'
+            text += f'\nThe Disaster level of this person is <a href="https://t.me/kaalirobot?start=nations">God</a>'
             Nation_level_present = True
     elif user.id in DEV_USERS:
-            text += f'\nThe Nation level of this person is <a href="https://t.me/kaalirobot?start=nations">Kaali Union</a>'
+            text += f'\nThe Disaster level of this person is <a href="https://t.me/kaalirobot?start=nations">Kaali Union</a>'
             Nation_level_present = True
     elif user.id in SUDO_USERS:
-            text += f'\nThe Nation level of this person is <a href="https://t.me/kaalirobot?start=nations">Lion</a>'
+            text += f'\nThe Disaster level of this person is <a href="https://t.me/kaalirobot?start=nations">Lion</a>'
             Nation_level_present = True
     elif user.id in SUPPORT_USERS:
-            text += f'\nThe Nation level of this person is <a href="https://t.me/kaalirobot?start=nations">Leopard</a>'
+            text += f'\nThe Disaster level of this person is <a href="https://t.me/kaalirobot?start=nations">Leopard</a>'
             Nation_level_present = True
     elif user.id in TIGER_USERS:
-            text += f'\nThe Nation level of this person is <a href="https://t.me/kaalirobot?start=nations">Tiger</a>'
+            text += f'\nThe Disaster level of this person is <a href="https://t.me/kaalirobot?start=nations">Tiger</a>'
             Nation_level_present = True
     elif user.id in WHITELIST_USERS:
-            text += f'\nThe Nation level of this person is <a href="https://t.me/kaalirobot?start=nations">Hyena</a>'
+            text += f'\nThe Disaster level of this person is <a href="https://t.me/kaalirobot?start=nations">Hyena</a>'
             Nation_level_present = True
 
     text += "\n"
