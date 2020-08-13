@@ -83,13 +83,13 @@ def gban(bot: Bot, update: Update, args: List[str]):
 
     if int(user_id) in SUDO_USERS:
         message.reply_text(
-            "I spy, with my little eye... a Nation! Why are you guys turning on each other?"
+            "I spy, with my little eye... a Disaster! Why are you guys turning on each other?"
         )
         return
 
     if int(user_id) in SUPPORT_USERS:
         message.reply_text(
-            "OOOH someone's trying to gban a Sakura Nation! *grabs popcorn*"
+            "OOOH someone's trying to gban a Leopard Disaster! *grabs popcorn*"
         )
         return
 
@@ -98,7 +98,7 @@ def gban(bot: Bot, update: Update, args: List[str]):
         return
 
     if int(user_id) in WHITELIST_USERS:
-        message.reply_text("That's a Neptunia! They cannot be banned!")
+        message.reply_text("That's a Hyena! They cannot be banned!")
         return
 
     if user_id == bot.id:
