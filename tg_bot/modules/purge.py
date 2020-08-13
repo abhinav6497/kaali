@@ -3,7 +3,7 @@ from tg_bot.modules.helper_funcs.telethn.chatstatus import can_delete_messages
 from tg_bot.lyn import lyndabot
 
 
-@lyndabot(pattern="^/purge")
+@kaali(pattern="^/purge")
 async def purge_messages(event):
     if event.from_id == None:
         return
@@ -37,7 +37,7 @@ async def purge_messages(event):
     await event.respond(text, parse_mode="markdown")
 
 
-@lyndabot(pattern="^/del$")
+@kaali(pattern="^/del$")
 async def delete_messages(event):
     if event.from_id == None:
         return
