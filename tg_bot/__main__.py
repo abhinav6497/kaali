@@ -39,7 +39,7 @@ from tg_bot.modules.helper_funcs.misc import paginate_modules
 
 PM_START_TEXT = """
 Hi {}, my name is {}! 
-I am Funny group management bot with some fun extras [;)](https://telegra.ph/file/e86b3fd52442503974b9c.jpg)
+I am Funny group management bot with some fun extras [;)](https://telegra.ph/file/e
 
 You can find the list of available commands with /help.
 
