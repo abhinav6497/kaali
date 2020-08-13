@@ -1,6 +1,6 @@
 from tg_bot.modules.helper_funcs.telethn.chatstatus import user_is_admin
 from tg_bot.modules.helper_funcs.telethn.chatstatus import can_delete_messages
-from tg_bot.kaali import kaali
+from tg_bot.kaalibot import kaali
 
 
 @kaali(pattern="^/purge")
