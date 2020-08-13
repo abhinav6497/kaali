@@ -593,15 +593,15 @@ def fed_ban(bot: Bot, update: Update, args: List[str]):
         return
 
     if user_id == OWNER_ID:
-        message.reply_text("Nation level God cannot be fed banned!")
+        message.reply_text("Disaster level God cannot be fed banned!")
         return
 
     if int(user_id) in SUDO_USERS:
-        message.reply_text("Royals cannot be fed banned!")
+        message.reply_text("Lions cannot be fed banned!")
         return
 
-    if int(user_id) in SARDEGNA_USERS:
-        message.reply_text("SARDEGNAs cannot be fed banned!")
+    if int(user_id) in TIGER_USERS:
+        message.reply_text("TIGERs cannot be fed banned!")
         return
 
     if int(user_id) in WHITELIST_USERS:
