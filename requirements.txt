@@ -21,3 +21,4 @@ speedtest-cli
 coffeehouse
 spamwatch
 telethon
+wikipedia
