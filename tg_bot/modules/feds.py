@@ -1699,7 +1699,7 @@ def fed_import_bans(bot: Bot, update: Update, chat_data):
                     if int(import_userid) in SUDO_USERS:
                         failed += 1
                         continue
-                    if int(import_userid) in SARDEGNA_USERS:
+                    if int(import_userid) in TIGER_USERS:
                         failed += 1
                         continue
                     if int(import_userid) in WHITELIST_USERS:
@@ -1776,7 +1776,7 @@ def fed_import_bans(bot: Bot, update: Update, chat_data):
                     if int(import_userid) in SUDO_USERS:
                         failed += 1
                         continue
-                    if int(import_userid) in SARDEGNA_USERS:
+                    if int(import_userid) in TIGER_USERS:
                         failed += 1
                         continue
                     if int(import_userid) in WHITELIST_USERS:
