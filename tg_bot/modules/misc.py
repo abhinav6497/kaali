@@ -162,23 +162,23 @@ def info(bot: Bot, update: Update, args: List[str]):
         pass
 
     if user.id == OWNER_ID:
-            text += f'\nThe Disaster level of this person is <a href="https://t.me/kaalirobot?start=nations">God</a>'
-            Nation_level_present = True
+            text += f'\nThe Disaster level of this person is <a href="https://t.me/kaalirobot?start=disasters">God</a>'
+            Disaster_level_present = True
     elif user.id in DEV_USERS:
-            text += f'\nThe Disaster level of this person is <a href="https://t.me/kaalirobot?start=nations">Kaali Union</a>'
-            Nation_level_present = True
+            text += f'\nThe Disaster level of this person is <a href="https://t.me/kaalirobot?start=disasters">Kaali Union</a>'
+            Disaster_level_present = True
     elif user.id in SUDO_USERS:
-            text += f'\nThe Disaster level of this person is <a href="https://t.me/kaalirobot?start=nations">Lion</a>'
-            Nation_level_present = True
+            text += f'\nThe Disaster level of this person is <a href="https://t.me/kaalirobot?start=disasters">Lion</a>'
+            Disaster_level_present = True
     elif user.id in SUPPORT_USERS:
-            text += f'\nThe Disaster level of this person is <a href="https://t.me/kaalirobot?start=nations">Leopard</a>'
-            Nation_level_present = True
+            text += f'\nThe Disaster level of this person is <a href="https://t.me/kaalirobot?start=disasters">Leopard</a>'
+            Disaster_level_present = True
     elif user.id in TIGER_USERS:
-            text += f'\nThe Disaster level of this person is <a href="https://t.me/kaalirobot?start=nations">Tiger</a>'
-            Nation_level_present = True
+            text += f'\nThe Disaster level of this person is <a href="https://t.me/kaalirobot?start=disasters">Tiger</a>'
+            Disaster_level_present = True
     elif user.id in WHITELIST_USERS:
-            text += f'\nThe Disaster level of this person is <a href="https://t.me/kaalirobot?start=nations">Hyena</a>'
-            Nation_level_present = True
+            text += f'\nThe Disaster level of this person is <a href="https://t.me/kaalirobot?start=disasters">Hyena</a>'
+            Disaster_level_present = True
 
     text += "\n"
     for mod in USER_INFO:
