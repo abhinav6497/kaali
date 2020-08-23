@@ -2,14 +2,14 @@ import re, ast
 from io import BytesIO
 from typing import Optional
 
-import SaitamaRobot.modules.sql.notes_sql as sql
-from SaitamaRobot import LOGGER, MESSAGE_DUMP, SUPPORT_CHAT, dispatcher
-from SaitamaRobot.modules.disable import DisableAbleCommandHandler
-from SaitamaRobot.modules.helper_funcs.chat_status import user_admin
-from SaitamaRobot.modules.helper_funcs.misc import (build_keyboard,
+import tg_bot.modules.sql.notes_sql as sql
+from tg_bot import LOGGER, MESSAGE_DUMP, SUPPORT_CHAT, dispatcher
+from tg_bot.modules.disable import DisableAbleCommandHandler
+from tg_bot.modules.helper_funcs.chat_status import user_admin
+from tg_bot.modules.helper_funcs.misc import (build_keyboard,
                                                     revert_buttons)
-from SaitamaRobot.modules.helper_funcs.msg_types import get_note_type
-from SaitamaRobot.modules.helper_funcs.string_handling import escape_invalid_curly_brackets
+from tg_bot.modules.helper_funcs.msg_types import get_note_type
+from tg_bot.modules.helper_funcs.string_handling import escape_invalid_curly_brackets
 from telegram import (MAX_MESSAGE_LENGTH, InlineKeyboardMarkup, Message,
                       ParseMode, Update)
 from telegram.error import BadRequest
