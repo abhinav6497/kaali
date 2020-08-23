@@ -485,7 +485,7 @@ def __user_info__(user_id):
         user = sql.get_gbanned_user(user_id)
         if user.reason:
             text += f"\n<b>Reason:</b> {html.escape(user.reason)}"
-        text += "\n<b>Appeal Chat:</b> @YorktownEagleUnion"
+        text += "\n<b>Appeal Chat:</b> @KaaliSupport"
     else:
         text = text.format("No")
     return text
@@ -506,7 +506,7 @@ __help__ = """
 Gbans, also known as global bans, are used by the bot owners to ban spammers across all groups. This helps protect \
 you and your groups by removing spam flooders as quickly as possible. They can be disabled for you group by calling \
 /gbanstat
-Note: You can appeal gbans or ask gbans at @YorktownEagleUnion
+Note: You can appeal gbans or ask gbans at @KaaliSupport
 
 Kigyo also integrates @Spamwatch API into gbans to remove Spammers as much as possible from your chatroom!
 *What is SpamWatch?*
