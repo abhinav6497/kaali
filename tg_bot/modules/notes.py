@@ -127,7 +127,7 @@ def get(bot, update, notename, show_none=True, no_format=False):
                 else:
                     message.reply_text(
                         "This note could not be sent, as it is incorrectly formatted. Ask in "
-                        "@KaaliSupport if you can't figure out why!"
+                        "@YorktownEagleUnion if you can't figure out why!"
                     )
                     LOGGER.exception(
                         "Could not parse message #%s in chat %s", notename, str(chat_id)
@@ -214,7 +214,7 @@ def list_notes(bot: Bot, update: Update):
 
     msg = "*Notes in chat:*\n"
     for note in note_list:
-        note_name = (" • `#{}`\n".format(note.name))
+        note_name = escape_markdown(f" - {note.name}\n")
         if len(msg) + len(note_name) > MAX_MESSAGE_LENGTH:
             update.effective_message.reply_text(msg, parse_mode=ParseMode.MARKDOWN)
             msg = ""
