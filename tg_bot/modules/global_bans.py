@@ -253,7 +253,7 @@ def gban(bot: Bot, update: Update, args: List[str]):
         bot.send_message(
             user_id,
             "You have been globally banned from all groups where I have administrative permissions."
-            "If you think that this was a mistake, you may appeal your ban here: @YorktownEagleUnion",
+            "If you think that this was a mistake, you may appeal your ban here: @KaaliSupport",
             parse_mode=ParseMode.HTML,
         )
     except:
@@ -416,7 +416,7 @@ def check_and_ban(update, user_id, should_message=True):
             update.effective_message.reply_text(
                 "Alert: This user is globally banned.\n"
                 "*bans them from here*.\n"
-                "Appeal chat: @YorktownEagleUnion"
+                "Appeal chat: @KaaliSupport"
             )
 
 
