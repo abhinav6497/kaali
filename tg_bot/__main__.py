@@ -48,7 +48,7 @@ The support group chat is at @KaaliSupport
 
 HELP_STRINGS = """
 Hey there! My name is *{}*.
-I'm a part of *Eagle Union*
+
 Have a look at the following for an idea of some of \
 the things I can help you with.
 *Main* commands available:
