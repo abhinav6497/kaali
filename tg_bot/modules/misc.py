@@ -17,6 +17,7 @@ from tg_bot import (
     DEV_USERS,
     TIGER_USERS,
     WHITELIST_USERS,
+    sw
 )
 from tg_bot.__main__ import STATS, USER_INFO, TOKEN
 from tg_bot.modules.disable import DisableAbleCommandHandler
@@ -27,24 +28,20 @@ import tg_bot.modules.sql.users_sql as sql
 MARKDOWN_HELP = f"""
 Markdown is a very powerful formatting tool supported by telegram. {dispatcher.bot.first_name} has some enhancements, to make sure that \
 saved messages are correctly parsed, and to allow you to create buttons.
-
 - <code>_italic_</code>: wrapping text with '_' will produce italic text
 - <code>*bold*</code>: wrapping text with '*' will produce bold text
 - <code>`code`</code>: wrapping text with '`' will produce monospaced text, also known as 'code'
 - <code>[sometext](someURL)</code>: this will create a link - the message will just show <code>sometext</code>, \
 and tapping on it will open the page at <code>someURL</code>.
 EG: <code>[test](example.com)</code>
-
 - <code>[buttontext](buttonurl:someURL)</code>: this is a special enhancement to allow users to have telegram \
 buttons in their markdown. <code>buttontext</code> will be what is displayed on the button, and <code>someurl</code> \
 will be the url which is opened.
 EG: <code>[This is a button](buttonurl:example.com)</code>
-
 If you want multiple buttons on the same line, use :same, as such:
 <code>[one](buttonurl://example.com)
 [two](buttonurl://google.com:same)</code>
 This will create two buttons on a single line, instead of one button per line.
-
 Keep in mind that your message <b>MUST</b> contain some text other than just a button!
 """
 
@@ -144,6 +141,17 @@ def info(bot: Bot, update: Update, args: List[str]):
         text += f"\nUsername: @{html.escape(user.username)}"
 
     text += f"\nPermanent user link: {mention_html(user.id, 'link')}"
+    
+    try:
+        spamwtc = sw.get_ban(int(user.id))
+        if spamwtc:
+            text += "\n\n<b>This person is banned in Spamwatch!</b>"
+            text += f"\nReason: <pre>{spamwtc.reason}</pre>"
+            text += "\nAppeal at @SpamWatchSupport"
+        else:
+            pass
+    except:
+        pass # don't crash if api is down somehow...
 
     num_chats = sql.get_user_num_chats(user.id)
     text += f"\nChat count: <code>{num_chats}</code>"
@@ -268,13 +276,6 @@ Share what you're what listening to with the help of this module!
  - /clearuser: removes your last.fm username from the bot's database.
  - /lastfm: returns what you're scrobbling on last.fm.
 ───────────────────────────────
-*AniList*
-Get information about anime, manga or characters with the help of this module! All data is fetched from [AniList](anilist.co).
-*Available commands:*
- - /anime <anime>: returns information about the anime.
- - /character <character>: returns information about the character.
- - /manga <manga>: returns information about the manga.
-───────────────────────────────
 *Math*
 Solves complex math problems using https://newton.now.sh
  - /math: Simplify `/simplify 2^2+2(2)`
@@ -292,11 +293,9 @@ Solves complex math problems using https://newton.now.sh
  - /arctan: Inverse Tangent `/arctan 0`
  - /abs: Absolute Value `/abs -1`
  - /log: Logarithm `/log 2l8`
-
 __Keep in mind__: To find the tangent line of a function at a certain x value, send the request as c|f(x) where c is the given x value and f(x) is the function expression, the separator is a vertical bar '|'. See the table above for an example request.
 To find the area under a function, send the request as c:d|f(x) where c is the starting x value, d is the ending x value, and f(x) is the function under which you want the curve between the two x values.
 To compute fractions, enter expressions as numerator(over)denominator. For example, to process 2/4 you must send in your expression as 2(over)4. The result expression will be in standard math notation (1/2, 3/4).
-
 """
 
 ID_HANDLER = DisableAbleCommandHandler("id", get_id, pass_args=True)
