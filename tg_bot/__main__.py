@@ -39,16 +39,15 @@ from tg_bot.modules.helper_funcs.misc import paginate_modules
 
 PM_START_TEXT = """
 Hi {}, my name is {}! 
-I am Funny group management bot with some extras 🤪
-
+I am an Anime themed group management bot with some fun extras [;)](https://telegra.ph/file/095d7e696096e21b06447.jpg)
 You can find the list of available commands with /help.
-
-The support group chat is at @KaaliSupport
+[Kigyō's Repo](https://github.com/Dank-del/EnterpriseALRobot) 
+The support group chat is at @YorktownEagleUnion
 """
 
 HELP_STRINGS = """
 Hey there! My name is *{}*.
-
+I'm a part of *Eagle Union*
 Have a look at the following for an idea of some of \
 the things I can help you with.
 *Main* commands available:
@@ -66,9 +65,9 @@ And the following:
 )
 
 
-KAALI_IMG = "https://telegra.ph/file/e86b3fd52442503974b9c.jpg"
+KIGYO_IMG = "https://telegra.ph/file/e5100e06c03767af80023.jpg"
 
-DONATE_STRING = """Kaali is Free for everyone, Still if you want to Donate click [here](paypal.me/abhinav6497) """
+DONATE_STRING = """I'm free for everyone!! """
 
 IMPORTED = {}
 MIGRATEABLE = []
@@ -157,7 +156,7 @@ def start(bot: Bot, update: Update, args: List[str]):
         else:
             first_name = update.effective_user.first_name
             update.effective_message.reply_photo(
-                KAALI_IMG,
+                KIGYO_IMG,
                 PM_START_TEXT.format(
                     escape_markdown(first_name),
                     escape_markdown(bot.first_name),
@@ -168,7 +167,7 @@ def start(bot: Bot, update: Update, args: List[str]):
                     [
                         [
                             InlineKeyboardButton(
-                                text="Add Kaali to your group",
+                                text="Add Kigyō to your group",
                                 url="t.me/{}?startgroup=true".format(bot.username),
                             )
                         ]
@@ -215,6 +214,9 @@ def help_button(bot: Bot, update: Update):
     prev_match = re.match(r"help_prev\((.+?)\)", query.data)
     next_match = re.match(r"help_next\((.+?)\)", query.data)
     back_match = re.match(r"help_back", query.data)
+
+    print(query.message.chat.id)
+
     try:
         if mod_match:
             module = mod_match.group(1)
@@ -224,7 +226,7 @@ def help_button(bot: Bot, update: Update):
                 )
                 + HELPABLE[module].__help__
             )
-            query.message.reply_text(
+            query.message.edit_text(
                 text=text,
                 parse_mode=ParseMode.MARKDOWN,
                 reply_markup=InlineKeyboardMarkup(
@@ -233,46 +235,33 @@ def help_button(bot: Bot, update: Update):
             )
 
         elif prev_match:
-            curr_page = int(prev_match.group(1))
-            query.message.reply_text(
-                HELP_STRINGS,
-                parse_mode=ParseMode.MARKDOWN,
-                reply_markup=InlineKeyboardMarkup(
-                    paginate_modules(curr_page - 1, HELPABLE, "help")
-                ),
-            )
-
-        elif next_match:
-            next_page = int(next_match.group(1))
-            query.message.reply_text(
-                HELP_STRINGS,
-                parse_mode=ParseMode.MARKDOWN,
-                reply_markup=InlineKeyboardMarkup(
-                    paginate_modules(next_page + 1, HELPABLE, "help")
-                ),
-            )
-
-        elif back_match:
-            query.message.reply_text(
+                curr_page = int(prev_match.group(1))
+                query.message.edit_text(
                 text=HELP_STRINGS,
                 parse_mode=ParseMode.MARKDOWN,
                 reply_markup=InlineKeyboardMarkup(
-                    paginate_modules(0, HELPABLE, "help")
-                ),
-            )
+                    paginate_modules(curr_page - 1, HELPABLE, "help")))
+
+        elif next_match:
+            next_page = int(next_match.group(1))
+            query.message.edit_text(
+                text=HELP_STRINGS,
+                parse_mode=ParseMode.MARKDOWN,
+                reply_markup=InlineKeyboardMarkup(
+                    paginate_modules(next_page + 1, HELPABLE, "help")))
+
+        elif back_match:
+            query.message.edit_text(
+                text=HELP_STRINGS,
+                parse_mode=ParseMode.MARKDOWN,
+                reply_markup=InlineKeyboardMarkup(paginate_modules(0, HELPABLE, "help")))
 
         # ensure no spinny white circle
         bot.answer_callback_query(query.id)
-        query.message.delete()
-    except BadRequest as excp:
-        if excp.message == "Message is not modified":
-            pass
-        elif excp.message == "Query_id_invalid":
-            pass
-        elif excp.message == "Message can't be deleted":
-            pass
-        else:
-            LOGGER.exception("Exception in help buttons. %s", str(query.data))
+        # query.message.delete()
+
+    except BadRequest:
+        pass
 
 
 @run_async
