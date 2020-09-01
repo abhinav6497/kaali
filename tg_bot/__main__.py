@@ -39,15 +39,13 @@ from tg_bot.modules.helper_funcs.misc import paginate_modules
 
 PM_START_TEXT = """
 Hi {}, my name is {}! 
-I am an Anime themed group management bot with some fun extras [;)](https://telegra.ph/file/095d7e696096e21b06447.jpg)
+I am Funny group management bot with some extras 🤪
 You can find the list of available commands with /help.
-[Kigyō's Repo](https://github.com/Dank-del/EnterpriseALRobot) 
-The support group chat is at @YorktownEagleUnion
+The support group chat is at @KaaliSupport
 """
 
 HELP_STRINGS = """
 Hey there! My name is *{}*.
-I'm a part of *Eagle Union*
 Have a look at the following for an idea of some of \
 the things I can help you with.
 *Main* commands available:
@@ -65,9 +63,9 @@ And the following:
 )
 
 
-KIGYO_IMG = "https://telegra.ph/file/e5100e06c03767af80023.jpg"
+KAALI_IMG = "https://telegra.ph/file/e86b3fd52442503974b9c.jpg"
 
-DONATE_STRING = """I'm free for everyone!! """
+DONATE_STRING = """Kaali is Free for everyone, Still if you want to Donate click [here](paypal.me/abhinav6497) """
 
 IMPORTED = {}
 MIGRATEABLE = []
@@ -156,7 +154,7 @@ def start(bot: Bot, update: Update, args: List[str]):
         else:
             first_name = update.effective_user.first_name
             update.effective_message.reply_photo(
-                KIGYO_IMG,
+                KAALI_IMG,
                 PM_START_TEXT.format(
                     escape_markdown(first_name),
                     escape_markdown(bot.first_name),
@@ -167,7 +165,7 @@ def start(bot: Bot, update: Update, args: List[str]):
                     [
                         [
                             InlineKeyboardButton(
-                                text="Add Kigyō to your group",
+                                text="Add Kaali to your group",
                                 url="t.me/{}?startgroup=true".format(bot.username),
                             )
                         ]
