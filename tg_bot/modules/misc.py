@@ -15,7 +15,7 @@ from tg_bot import (
     SUDO_USERS,
     SUPPORT_USERS,
     DEV_USERS,
-    SARDEGNA_USERS,
+    TIGER_USERS,
     WHITELIST_USERS,
     sw
 )
