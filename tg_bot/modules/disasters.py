@@ -37,7 +37,7 @@ def check_user_id(user_id: int, bot: Bot) -> Optional[str]:
 
 
 # I added extra new lines
-Disasters = """ Kaali has bot access levels we call as *"Disaster Levels"*
+disasters = """ Kaali has bot access levels we call as *"Disaster Levels"*
 \n*Kaali Union* - Devs who can access the bots server and can execute, edit, modify bot code. Can also manage other Disasters
 \n*God* - Only one exists, bot owner. 
 Owner has complete bot access, including bot adminship in chats Kaali is at.

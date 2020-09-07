@@ -155,6 +155,8 @@ def info(bot: Bot, update: Update, args: List[str]):
     except:
         pass # don't crash if api is down somehow...
 
+    Disaster_level_present = False
+
     num_chats = sql.get_user_num_chats(user.id)
     text += f"\nChat count: <code>{num_chats}</code>"
 
@@ -172,24 +174,27 @@ def info(bot: Bot, update: Update, args: List[str]):
         pass
 
     if user.id == OWNER_ID:
-            text += f'\nThe Disaster level of this person is <a href="https://t.me/kaalirobot?start=disasters">God</a>'
+            text += f'\nThis person is my owner'
             Disaster_level_present = True
     elif user.id in DEV_USERS:
-            text += f'\nThe Disaster level of this person is <a href="https://t.me/kaalirobot?start=disasters">Kaali Union</a>'
+            text += f'\nThis Person is a part of Kaali Union'
             Disaster_level_present = True
     elif user.id in SUDO_USERS:
-            text += f'\nThe Disaster level of this person is <a href="https://t.me/kaalirobot?start=disasters">Lion</a>'
+            text += f'\nThe Disaster level of this person is Lion'
             Disaster_level_present = True
     elif user.id in SUPPORT_USERS:
-            text += f'\nThe Disaster level of this person is <a href="https://t.me/kaalirobot?start=disasters">Leopard</a>'
+            text += f'\nThe Disaster level of this person is Leopard'
             Disaster_level_present = True
     elif user.id in TIGER_USERS:
-            text += f'\nThe Disaster level of this person is <a href="https://t.me/kaalirobot?start=disasters">Tiger</a>'
+            text += f'\nThe Disaster level of this person is Tiger'
             Disaster_level_present = True
     elif user.id in WHITELIST_USERS:
-            text += f'\nThe Disaster level of this person is <a href="https://t.me/kaalirobot?start=disasters">Hyena</a>'
+            text += f'\nThe Disaster level of this person is Hyena'
             Disaster_level_present = True
 
+    if Disaster_level_present:
+        text += ' [<a href="https://t.me/{}?start=disasters">?</a>]'.format(
+            bot.username)
     text += "\n"
     for mod in USER_INFO:
         if mod.__mod_name__ == "Users":
