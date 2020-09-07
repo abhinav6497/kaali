@@ -206,7 +206,7 @@ def info(bot: Bot, update: Update, args: List[str]):
             mod_info = mod.__user_info__(user.id, chat.id)
         if mod_info:
             text += "\n" + mod_info
-
+            
     if INFOPIC:
         try:
             profile = bot.get_user_profile_photos(user.id).photos[0][-1]
@@ -242,7 +242,7 @@ def echo(bot: Bot, update: Update):
         message.reply_text(args[1], quote=False)
 
     message.delete()
-
+    
 def shell(command):
     process = Popen(command, stdout=PIPE, shell=True, stderr=PIPE)
     stdout, stderr = process.communicate()
