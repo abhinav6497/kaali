@@ -1,5 +1,5 @@
 import html
-import re
+import re, os
 import time
 from typing import List
 
@@ -18,6 +18,7 @@ from tg_bot import (
     DEV_USERS,
     TIGER_USERS,
     WHITELIST_USERS,
+    INFOPIC,
     sw
 )
 from tg_bot.__main__ import STATS, USER_INFO, TOKEN
@@ -201,9 +202,27 @@ def info(bot: Bot, update: Update, args: List[str]):
         if mod_info:
             text += "\n" + mod_info
 
-    update.effective_message.reply_text(
-        text, parse_mode=ParseMode.HTML, disable_web_page_preview=True
-    )
+    if INFOPIC:
+        try:
+            profile = bot.get_user_profile_photos(user.id).photos[0][-1]
+            _file = bot.get_file(profile["file_id"])
+            file = _file.download("ProfilePic.png")
+
+            message.reply_document(
+                document=open("ProfilePic.png", "rb"),
+                caption=(text),
+                parse_mode=ParseMode.HTML,
+                disable_web_page_preview=True)
+
+            os.remove("ProfilePic.png")
+        # Incase user don't have profile pic, send normal text
+        except IndexError:
+            message.reply_text(text, parse_mode=ParseMode.HTML, disable_web_page_preview=True)
+
+    else:
+        message.reply_text(text, parse_mode=ParseMode.HTML, disable_web_page_preview=True)
+
+
 
 
 @run_async
