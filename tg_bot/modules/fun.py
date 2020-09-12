@@ -19,7 +19,7 @@ def runs(bot: Bot, update: Update):
     update.effective_message.reply_text(random.choice(fun_strings.RUN_STRINGS))
 
 @run_async
-def sanitize(update: Update, context: CallbackContext):
+def sanitize(bot: Bot, update: Update):
     message = update.effective_message
     name = message.reply_to_message.from_user.first_name if message.reply_to_message else message.from_user.first_name
     reply_animation = message.reply_to_message.reply_animation if message.reply_to_message else message.reply_animation
