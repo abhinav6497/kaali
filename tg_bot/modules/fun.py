@@ -12,12 +12,20 @@ from tg_bot.modules.disable import DisableAbleCommandHandler
 from tg_bot.modules.helper_funcs.chat_status import is_user_admin
 from tg_bot.modules.helper_funcs.extraction import extract_user
 
+GIF_ID = 'CgACAgQAAx0CSVUvGgAC7KpfWxMrgGyQs-GUUJgt-TSO8cOIDgACaAgAAlZD0VHT3Zynpr5nGxsE'
 
 @run_async
 def runs(bot: Bot, update: Update):
     update.effective_message.reply_text(random.choice(fun_strings.RUN_STRINGS))
 
+@run_async
+def sanitize(update: Update, context: CallbackContext):
+    message = update.effective_message
+    name = message.reply_to_message.from_user.first_name if message.reply_to_message else message.from_user.first_name
+    reply_animation = message.reply_to_message.reply_animation if message.reply_to_message else message.reply_animation
+    reply_animation(GIF_ID, caption = f'*Sanitizes {name}*')
 
+    
 @run_async
 def slap(bot: Bot, update: Update, args: List[str]):
     message = update.effective_message
@@ -159,8 +167,10 @@ __help__ = """
  - /stickerid: reply to a sticker to get its ID.
  - /getsticker: reply to a sticker to get the raw PNG image.
  - /kang: reply to a sticker or image to add it to your pack.
+ - /sanitize: always use this before /pat or any contact
 """
 
+SANITIZE_HANDLER = DisableAbleCommandHandler("sanitize", sanitize)
 RUNS_HANDLER = DisableAbleCommandHandler("runs", runs)
 SLAP_HANDLER = DisableAbleCommandHandler("slap", slap, pass_args=True)
 ROLL_HANDLER = DisableAbleCommandHandler("roll", roll)
@@ -172,6 +182,7 @@ DECIDE_HANDLER = DisableAbleCommandHandler("decide", decide)
 TABLE_HANDLER = DisableAbleCommandHandler("table", table)
 #ABUSE_HANDLER = DisableAbleCommandHandler("abuse", abuse)
 
+dispatcher.add_handler(SANITIZE_HANDLER)
 dispatcher.add_handler(RUNS_HANDLER)
 dispatcher.add_handler(SLAP_HANDLER)
 dispatcher.add_handler(ROLL_HANDLER)
@@ -194,6 +205,7 @@ __command_list__ = [
     "rlg",
     "decide",
     "table",
+    "sanitize"
 ]
 __handlers__ = [
     RUNS_HANDLER,
@@ -205,5 +217,6 @@ __handlers__ = [
     RLG_HANDLER,
     DECIDE_HANDLER,
     TABLE_HANDLER,
+    SANITIZE_HANDLER
     #ABUSE_HANDLER,
 ]
