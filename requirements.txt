@@ -22,3 +22,4 @@ coffeehouse
 spamwatch
 telethon
 wikipedia
+covid
