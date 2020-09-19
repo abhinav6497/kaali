@@ -340,6 +340,24 @@ def covid(bot: Bot, update: Update):
                                      total_tests)
     message.reply_markdown(reply)
 
+def format_integer(number, thousand_separator=','):
+    def reverse(string):
+        string = "".join(reversed(string))
+        return string
+
+    s = reverse(str(number))
+    count = 0
+    result = ''
+    for char in s:
+        count = count + 1
+        if count % 3 == 0:
+            if len(s) == count:
+                result = char + result
+            else:
+                result = thousand_separator + char + result
+        else:
+            result = char + result
+    return result
 
 
 __help__ = """
