@@ -1,6 +1,6 @@
-from telegram import Update
+from telegram import Bot, Update
 
-from telegram.ext import Bot, Update, run_async, CommandHandler
+from telegram.ext import run_async, CommandHandler
 
 from tg_bot import dispatcher
 
