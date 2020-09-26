@@ -323,13 +323,7 @@ __help__ = """
  - /cash : currency converter
    example syntax: /cash 1 USD INR
 ───────────────────────────────
-*Last.FM*
-Share what you're what listening to with the help of this module!
-*Available commands:*
- - /setuser <username>: sets your last.fm username.
- - /clearuser: removes your last.fm username from the bot's database.
- - /lastfm: returns what you're scrobbling on last.fm.
-───────────────────────────────
+
 *Math*
 Solves complex math problems using https://newton.now.sh
  - /math: Simplify `/simplify 2^2+2(2)`
