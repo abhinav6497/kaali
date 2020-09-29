@@ -214,8 +214,8 @@ def info(bot: Bot, update: Update, args: List[str]):
             _file = bot.get_file(profile["file_id"])
             file = _file.download("ProfilePic.jpeg")
 
-            message.reply_document(
-                document=open("ProfilePic.jpeg", "rb"),
+            message.reply_photo(
+                photo=open("ProfilePic.jpeg", "rb"),
                 caption=(text),
                 parse_mode=ParseMode.HTML,
                 disable_web_page_preview=True)
