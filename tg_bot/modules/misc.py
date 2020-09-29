@@ -212,15 +212,15 @@ def info(bot: Bot, update: Update, args: List[str]):
         try:
             profile = bot.get_user_profile_photos(user.id).photos[0][-1]
             _file = bot.get_file(profile["file_id"])
-            file = _file.download("ProfilePic.jpg")
+            file = _file.download("ProfilePic.jpeg")
 
             message.reply_document(
-                document=open("ProfilePic.jpg", "rb"),
+                document=open("ProfilePic.jpeg", "rb"),
                 caption=(text),
                 parse_mode=ParseMode.HTML,
                 disable_web_page_preview=True)
 
-            os.remove("ProfilePic.jpg")
+            os.remove("ProfilePic.jpeg")
         # Incase user don't have profile pic, send normal text
         except IndexError:
             message.reply_text(text, parse_mode=ParseMode.HTML, disable_web_page_preview=True)
