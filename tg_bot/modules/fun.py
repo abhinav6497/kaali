@@ -168,7 +168,7 @@ __help__ = """
  - /stickerid: reply to a sticker to get its ID.
  - /getsticker: reply to a sticker to get the raw PNG image.
  - /kang: reply to a sticker or image to add it to your pack.
- - /sanitize: always use this before /pat or any contact
+ - /sanitize: sanitation xd
 """
 
 SANITIZE_HANDLER = DisableAbleCommandHandler("sanitize", sanitize)
