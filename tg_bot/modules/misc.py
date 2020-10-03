@@ -25,6 +25,7 @@ from tg_bot.__main__ import STATS, USER_INFO, TOKEN
 from tg_bot.modules.disable import DisableAbleCommandHandler
 from tg_bot.modules.helper_funcs.chat_status import user_admin, sudo_plus
 from tg_bot.modules.helper_funcs.extraction import extract_user
+from tg_bot.modules.sql.global_bans_sql import is_user_gbanned
 from tg_bot.modules.sql.users_sql import get_user_num_chats
 import tg_bot.modules.sql.users_sql as sql
 
