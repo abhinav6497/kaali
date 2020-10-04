@@ -41,7 +41,6 @@ PM_START_TEXT = """
 Hi {}, my name is {}! 
 I am Funny group management bot with some extras 🤪
 You can find the list of available commands with /help.
-The support group chat is at @KaaliSupport
 """
 
 HELP_STRINGS = """
@@ -174,16 +173,6 @@ else:
                          InlineKeyboardButton(
                              text="🔔 Updates Channel",
                              url="https://t.me/KaaliUpdates")
-                     ],
-                     [
-                         InlineKeyboardButton(
-                             text="🧾 Getting started guide",
-                             url="https://t.me/OnePunchUpdates/29")
-                     ],
-                     [
-                         InlineKeyboardButton(
-                             text="🗄 Source code",
-                             url="https://github.com/AnimeKaizoku/SaitamaRobot")
                      ]]))
     else:
         update.effective_message.reply_text(
