@@ -150,7 +150,7 @@ def start(bot: Bot, update: Update, args: List[str]):
             elif args[0][1:].isdigit() and "rules" in IMPORTED:
                 IMPORTED["rules"].send_rules(update, args[0], from_pm=True)
 
-else:
+        else:
             first_name = update.effective_user.first_name
             update.effective_message.reply_photo(
                 KAALI_IMG,
