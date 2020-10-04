@@ -169,7 +169,7 @@ def start(bot: Bot, update: Update, args: List[str]):
                      [
                          InlineKeyboardButton(
                              text="🚑 Support Group",
-                             url=f"https://t.me/{SUPPORT_CHAT}"),
+                             url=f"https://t.me/KaaliSupport"),
                          InlineKeyboardButton(
                              text="🔔 Updates Channel",
                              url="https://t.me/KaaliUpdates")
