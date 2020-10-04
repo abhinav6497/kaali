@@ -62,7 +62,7 @@ And the following:
 )
 
 
-KAALI_IMG = "https://telegra.ph/file/e86b3fd52442503974b9c.jpg"
+KAALI_IMG = "https://telegra.ph/file/f59edcdd5b8f0a6fa0a28.jpg"
 
 DONATE_STRING = """Kaali is Free for everyone, Still if you want to Donate click [here](paypal.me/abhinav6497) """
 
