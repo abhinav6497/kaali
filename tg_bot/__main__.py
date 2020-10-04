@@ -41,7 +41,6 @@ PM_START_TEXT = """
 Hi {}, my name is {}! 
 I am Funny group management bot with some extras 🤪
 You can find the list of available commands with /help.
-The support group chat is at @KaaliSupport
 """
 
 HELP_STRINGS = """
@@ -157,23 +156,28 @@ def start(bot: Bot, update: Update, args: List[str]):
                 KAALI_IMG,
                 PM_START_TEXT.format(
                     escape_markdown(first_name),
-                    escape_markdown(bot.first_name),
-                    OWNER_ID,
-                ),
+                    escape_markdown(bot.first_name)),
                 parse_mode=ParseMode.MARKDOWN,
+                disable_web_page_preview=True,
                 reply_markup=InlineKeyboardMarkup(
-                    [
-                        [
-                            InlineKeyboardButton(
-                                text="Add Kaali to your group",
-                                url="t.me/{}?startgroup=true".format(bot.username),
-                            )
-                        ]
-                    ]
-                ),
-            )
+                    [[
+                        InlineKeyboardButton(
+                            text="☑️ Add Kaali to your group",
+                            url="t.me/{}?startgroup=true".format(
+                                bot.username))
+                    ],
+                     [
+                         InlineKeyboardButton(
+                             text="🚑 Support Group",
+                             url=f"https://t.me/KaaliSupport"),
+                         InlineKeyboardButton(
+                             text="🔔 Updates Channel",
+                             url="https://t.me/KaaliUpdates")
+                     ]]))
     else:
-        update.effective_message.reply_text("Yo, whadup?")
+        update.effective_message.reply_text(
+            "I'm online!\n<b>Up since:</b> <code>{}</code>".format(uptime),
+            parse_mode=ParseMode.HTML)
 
 
 # for test purposes
