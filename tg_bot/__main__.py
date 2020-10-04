@@ -164,7 +164,7 @@ def start(bot: Bot, update: Update, args: List[str]):
                         InlineKeyboardButton(
                             text="☑️ Add Kaali to your group",
                             url="t.me/{}?startgroup=true".format(
-                                context.bot.username))
+                                bot.username))
                     ],
                      [
                          InlineKeyboardButton(
