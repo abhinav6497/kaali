@@ -151,29 +151,44 @@ def start(bot: Bot, update: Update, args: List[str]):
             elif args[0][1:].isdigit() and "rules" in IMPORTED:
                 IMPORTED["rules"].send_rules(update, args[0], from_pm=True)
 
-        else:
+else:
             first_name = update.effective_user.first_name
             update.effective_message.reply_photo(
                 KAALI_IMG,
                 PM_START_TEXT.format(
                     escape_markdown(first_name),
-                    escape_markdown(bot.first_name),
-                    OWNER_ID,
-                ),
+                    escape_markdown(context.bot.first_name)),
                 parse_mode=ParseMode.MARKDOWN,
+                disable_web_page_preview=True,
                 reply_markup=InlineKeyboardMarkup(
-                    [
-                        [
-                            InlineKeyboardButton(
-                                text="Add Kaali to your group",
-                                url="t.me/{}?startgroup=true".format(bot.username),
-                            )
-                        ]
-                    ]
-                ),
-            )
+                    [[
+                        InlineKeyboardButton(
+                            text="☑️ Add Kaali to your group",
+                            url="t.me/{}?startgroup=true".format(
+                                context.bot.username))
+                    ],
+                     [
+                         InlineKeyboardButton(
+                             text="🚑 Support Group",
+                             url=f"https://t.me/{SUPPORT_CHAT}"),
+                         InlineKeyboardButton(
+                             text="🔔 Updates Channel",
+                             url="https://t.me/KaaliUpdates")
+                     ],
+                     [
+                         InlineKeyboardButton(
+                             text="🧾 Getting started guide",
+                             url="https://t.me/OnePunchUpdates/29")
+                     ],
+                     [
+                         InlineKeyboardButton(
+                             text="🗄 Source code",
+                             url="https://github.com/AnimeKaizoku/SaitamaRobot")
+                     ]]))
     else:
-        update.effective_message.reply_text("Yo, whadup?")
+        update.effective_message.reply_text(
+            "I'm online!\n<b>Up since:</b> <code>{}</code>".format(uptime),
+            parse_mode=ParseMode.HTML)
 
 
 # for test purposes
