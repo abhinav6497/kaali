@@ -153,6 +153,19 @@ def table(bot: Bot, update: Update):
     )
     reply_text(random.choice(fun_strings.TABLE))
 
+@run_async
+def judge(bot: Bot, update: Update):
+    judger = ["<b>is lying!</b>", "<b>is telling the truth!</b>"]
+    rep = update.effective_message
+    msg = ""
+    msg = update.effective_message.reply_to_message
+    if not msg:
+        rep.reply_text("Reply to someone's message to judge them!")
+    else:
+        user = msg.from_user.first_name
+    res = random.choice(judger)
+    reply = msg.reply_text(f"{user} {res}", parse_mode=ParseMode.HTML)
+
 
 __help__ = """
  - /runs: reply a random string from an array of replies.
@@ -170,6 +183,7 @@ __help__ = """
  - /kang: reply to a sticker or image to add it to your pack.
  - /stickers: search stickers in combot sticker finder.
  - /sanitize: sanitation xd
+ - /judge: as a reply to someone, checks if they're lying or not!
 """
 
 SANITIZE_HANDLER = DisableAbleCommandHandler("sanitize", sanitize)
@@ -182,6 +196,7 @@ BLUETEXT_HANDLER = DisableAbleCommandHandler("bluetext", bluetext)
 RLG_HANDLER = DisableAbleCommandHandler("rlg", rlg)
 DECIDE_HANDLER = DisableAbleCommandHandler("decide", decide)
 TABLE_HANDLER = DisableAbleCommandHandler("table", table)
+JUDGE_HANDLER = DisableAbleCommandHandler("judge", judge)
 #ABUSE_HANDLER = DisableAbleCommandHandler("abuse", abuse)
 
 dispatcher.add_handler(SANITIZE_HANDLER)
@@ -194,6 +209,7 @@ dispatcher.add_handler(BLUETEXT_HANDLER)
 dispatcher.add_handler(RLG_HANDLER)
 dispatcher.add_handler(DECIDE_HANDLER)
 dispatcher.add_handler(TABLE_HANDLER)
+dispatcher.add_handler(JUDGE_HANDLER)
 #dispatcher.add_handler(ABUSE_HANDLER)
 
 __mod_name__ = "Fun"
@@ -208,6 +224,7 @@ __command_list__ = [
     "decide",
     "table",
     "sanitize"
+    "judge",
 ]
 __handlers__ = [
     RUNS_HANDLER,
@@ -219,6 +236,7 @@ __handlers__ = [
     RLG_HANDLER,
     DECIDE_HANDLER,
     TABLE_HANDLER,
-    SANITIZE_HANDLER
+    SANITIZE_HANDLER,
+    JUDGE_HANDLER,
     #ABUSE_HANDLER,
 ]
