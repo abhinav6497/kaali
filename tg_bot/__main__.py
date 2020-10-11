@@ -3,6 +3,7 @@ import re
 from typing import Optional, List
 from sys import argv
 
+from pyrogram import idle, Client
 from telegram import Bot, Update, ParseMode, InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.error import (
     Unauthorized,
@@ -29,6 +30,7 @@ from tg_bot import (
     LOGGER,
     ALLOW_EXCL,
     telethn,
+    kp,
 )
 
 # needed to dynamically load modules
@@ -38,7 +40,7 @@ from tg_bot.modules.helper_funcs.chat_status import is_user_admin
 from tg_bot.modules.helper_funcs.misc import paginate_modules
 
 PM_START_TEXT = """
-Hi {}, my name is {}! 
+Hi {}, my name is {}!
 I am Funny group management bot with some extras 🤪
 You can find the list of available commands with /help.
 """
@@ -562,7 +564,10 @@ def main():
     updater.idle()
 
 
+
 if __name__ == "__main__":
+    kp.start()
     LOGGER.info("Successfully loaded modules: " + str(ALL_MODULES))
     telethn.start(bot_token=TOKEN)
     main()
+    idle()

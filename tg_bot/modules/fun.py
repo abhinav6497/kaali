@@ -26,7 +26,7 @@ def sanitize(bot: Bot, update: Update):
     reply_animation(GIF_ID, caption = f'*Sanitizes {name}*')
 
 
-    
+
 @run_async
 def slap(bot: Bot, update: Update, args: List[str]):
     message = update.effective_message
@@ -168,6 +168,7 @@ __help__ = """
  - /stickerid: reply to a sticker to get its ID.
  - /getsticker: reply to a sticker to get the raw PNG image.
  - /kang: reply to a sticker or image to add it to your pack.
+ - /stickers: search stickers in combot sticker finder.
  - /sanitize: sanitation xd
 """
 

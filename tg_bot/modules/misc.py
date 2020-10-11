@@ -144,7 +144,7 @@ def info(bot: Bot, update: Update, args: List[str]):
         text += f"\nUsername: @{html.escape(user.username)}"
 
     text += f"\nPermanent user link: {mention_html(user.id, 'link')}"
-    
+
     try:
         spamwtc = sw.get_ban(int(user.id))
         if spamwtc:
@@ -207,7 +207,7 @@ def info(bot: Bot, update: Update, args: List[str]):
             mod_info = mod.__user_info__(user.id, chat.id)
         if mod_info:
             text += "\n" + mod_info
-            
+
     if INFOPIC:
         try:
             profile = bot.get_user_profile_photos(user.id).photos[0][-1]
@@ -243,7 +243,7 @@ def echo(bot: Bot, update: Update):
         message.reply_text(args[1], quote=False)
 
     message.delete()
-    
+
 def shell(command):
     process = Popen(command, stdout=PIPE, shell=True, stderr=PIPE)
     stdout, stderr = process.communicate()
@@ -292,8 +292,8 @@ def stats(bot: Bot, update: Update):
     stats = "Current stats:\n" + "\n".join([mod.__stats__() for mod in STATS])
     result = re.sub(r"(\d+)", r"<code>\1</code>", stats)
     update.effective_message.reply_text(result, parse_mode=ParseMode.HTML)
-    
-    
+
+
 @run_async
 def ping(bot: Bot, update: Update):
     msg = update.effective_message
@@ -321,6 +321,8 @@ __help__ = """
  - /time <query> : Gives information about a timezone.
  - /cash : currency converter
    example syntax: /cash 1 USD INR
+ - /whois : get info about a user (uses @Pyrogram methods)
+ - /spbinfo : get info about a user from @Intellivoid's SpamProtection API
 ───────────────────────────────
 
 """

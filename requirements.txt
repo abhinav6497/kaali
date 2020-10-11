@@ -22,4 +22,5 @@ coffeehouse
 spamwatch
 telethon
 wikipedia
-covid
+pyrogram
+tgcrypto
