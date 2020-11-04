@@ -165,11 +165,6 @@ def start(bot: Bot, update: Update, args: List[str]):
                 reply_markup=InlineKeyboardMarkup(
                     [[
                         InlineKeyboardButton(
-                            text="Add Kaali to your group",
-                            url="t.me/{}?startgroup=true".format(bot.username))
-                    ],
-                    [
-                        InlineKeyboardButton(
                             text="🚑 Support Chat",
                             url=f"https://t.me/KaaliSupport"),
                         InlineKeyboardButton(
