@@ -379,8 +379,8 @@ def set_warn_limit(bot: Bot, update: Update, args: List[str]) -> str:
 
     if args:
         if args[0].isdigit():
-            if int(args[0]) < 3:
-                msg.reply_text("The minimum warn limit is 3!")
+            if int(args[0]) < 2:
+                msg.reply_text("The minimum warn limit is 2!")
             else:
                 sql.set_warn_limit(chat.id, int(args[0]))
                 msg.reply_text("Updated the warn limit to {}".format(args[0]))
