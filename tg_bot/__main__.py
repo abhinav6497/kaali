@@ -163,20 +163,34 @@ def start(bot: Bot, update: Update, args: List[str]):
                 ),
                 parse_mode=ParseMode.MARKDOWN,
                 reply_markup=InlineKeyboardMarkup(
-                    [[
-                        InlineKeyboardButton(
-                            text="🚑 Support Chat",
-                            url=f"https://t.me/KaaliSupport"),
-                        InlineKeyboardButton(
-                            text="🔔 Updates Channel",
-                            url="https://t.me/KaaliUpdates")
-                    ],
                     [
-                        InlineKeyboardButton(
-                            text="✅ Add Kaali to your group",
-                            url="t.me/{}?startgroup=true".format(
-                                bot.username))
-                    ]]))
+                        [
+                            InlineKeyboardButton(
+                                text="Add Kaali to your group",
+                                url="t.me/{}?startgroup=true".format(
+                                    bot.username
+                                ),
+                            )
+                        ],
+                        [
+                            InlineKeyboardButton(
+                                text="Support Chat",
+                                url=f"https://t.me/KaaliSupport",
+                            ),
+                            InlineKeyboardButton(
+                                text="Kaali Updates Channel",
+                                url="https://t.me/KaaliUpdates",
+                            ),
+                        ],
+                        [
+                            InlineKeyboardButton(
+                                text="Source code (Licensed under GPLv3)",
+                                url="https://github.com/abhinav6497/tgbot",
+                            )
+                        ],
+                    ]
+                ),
+            )
     else:
         update.effective_message.reply_text("Hi, I'm Kaali.")
 
