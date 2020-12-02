@@ -184,8 +184,8 @@ def start(bot: Bot, update: Update, args: List[str]):
                         ],
                         [
                             InlineKeyboardButton(
-                                text="Source code (Licensed under GPLv3)",
-                                url="https://github.com/abhinav6497/tgbot",
+                                text="Source code",
+                                url="https://github.com/abhinav6497/kaali",
                             )
                         ],
                     ]
